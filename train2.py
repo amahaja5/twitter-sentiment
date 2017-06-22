@@ -41,11 +41,11 @@ def crossValidate(model, prediction, modelName, messages, splits):
     #really simple to create a model and train it.
     #h = scipy.sparse.coo_matrix(messages['length'].as_matrix()[:,np.newaxis])
     #X_df = hstack([vect.transform(messages["text"]), h])
-    predict(model, vect)
+    predict(model)
     #print out the accuracy score over all the messages, because we've k cross validated
 
 
-def predict(model, vect):
+def predict(model):
 	messages = pd.read_csv('test.csv', encoding='latin-1')
 	X_df = vect.transform(messages["SentimentText"])
 	messages["Sentiment"] = model.predict(X_df)
